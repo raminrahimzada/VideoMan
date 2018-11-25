@@ -1,0 +1,11 @@
+C:\Users\ramin\source\repos\VideoMan\VideoMan\bin\Debug\netcoreapp2.1\VideoMan.deps.json
+C:\Users\ramin\source\repos\VideoMan\VideoMan\bin\Debug\netcoreapp2.1\VideoMan.runtimeconfig.json
+C:\Users\ramin\source\repos\VideoMan\VideoMan\bin\Debug\netcoreapp2.1\VideoMan.runtimeconfig.dev.json
+C:\Users\ramin\source\repos\VideoMan\VideoMan\bin\Debug\netcoreapp2.1\VideoMan.dll
+C:\Users\ramin\source\repos\VideoMan\VideoMan\bin\Debug\netcoreapp2.1\VideoMan.pdb
+C:\Users\ramin\source\repos\VideoMan\VideoMan\obj\Debug\netcoreapp2.1\VideoMan.csprojAssemblyReference.cache
+C:\Users\ramin\source\repos\VideoMan\VideoMan\obj\Debug\netcoreapp2.1\VideoMan.csproj.CoreCompileInputs.cache
+C:\Users\ramin\source\repos\VideoMan\VideoMan\obj\Debug\netcoreapp2.1\VideoMan.AssemblyInfoInputs.cache
+C:\Users\ramin\source\repos\VideoMan\VideoMan\obj\Debug\netcoreapp2.1\VideoMan.AssemblyInfo.cs
+C:\Users\ramin\source\repos\VideoMan\VideoMan\obj\Debug\netcoreapp2.1\VideoMan.dll
+C:\Users\ramin\source\repos\VideoMan\VideoMan\obj\Debug\netcoreapp2.1\VideoMan.pdb

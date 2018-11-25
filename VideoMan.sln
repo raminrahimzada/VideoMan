@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoMan", "VideoMan\VideoMan.csproj", "{D22BD901-DBA8-4908-83BE-B58051A51998}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AllUnitTests", "AllUnitTests\AllUnitTests.csproj", "{C7BB19EF-B8B0-45C2-833B-2CDF5FF4E3F5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D22BD901-DBA8-4908-83BE-B58051A51998}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D22BD901-DBA8-4908-83BE-B58051A51998}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D22BD901-DBA8-4908-83BE-B58051A51998}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D22BD901-DBA8-4908-83BE-B58051A51998}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7BB19EF-B8B0-45C2-833B-2CDF5FF4E3F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7BB19EF-B8B0-45C2-833B-2CDF5FF4E3F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7BB19EF-B8B0-45C2-833B-2CDF5FF4E3F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7BB19EF-B8B0-45C2-833B-2CDF5FF4E3F5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F25AA6A2-66C9-441E-94D4-C8DC21F5D20E}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,17 @@
+C:\Users\ramin\source\repos\VideoMan\AllUnitTests\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\ramin\source\repos\VideoMan\AllUnitTests\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\ramin\source\repos\VideoMan\AllUnitTests\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+C:\Users\ramin\source\repos\VideoMan\AllUnitTests\bin\Debug\netcoreapp2.1\AllUnitTests.deps.json
+C:\Users\ramin\source\repos\VideoMan\AllUnitTests\bin\Debug\netcoreapp2.1\AllUnitTests.runtimeconfig.json
+C:\Users\ramin\source\repos\VideoMan\AllUnitTests\bin\Debug\netcoreapp2.1\AllUnitTests.runtimeconfig.dev.json
+C:\Users\ramin\source\repos\VideoMan\AllUnitTests\bin\Debug\netcoreapp2.1\AllUnitTests.dll
+C:\Users\ramin\source\repos\VideoMan\AllUnitTests\bin\Debug\netcoreapp2.1\AllUnitTests.pdb
+C:\Users\ramin\source\repos\VideoMan\AllUnitTests\bin\Debug\netcoreapp2.1\VideoMan.dll
+C:\Users\ramin\source\repos\VideoMan\AllUnitTests\bin\Debug\netcoreapp2.1\VideoMan.pdb
+C:\Users\ramin\source\repos\VideoMan\AllUnitTests\obj\Debug\netcoreapp2.1\AllUnitTests.csprojAssemblyReference.cache
+C:\Users\ramin\source\repos\VideoMan\AllUnitTests\obj\Debug\netcoreapp2.1\AllUnitTests.csproj.CoreCompileInputs.cache
+C:\Users\ramin\source\repos\VideoMan\AllUnitTests\obj\Debug\netcoreapp2.1\AllUnitTests.AssemblyInfoInputs.cache
+C:\Users\ramin\source\repos\VideoMan\AllUnitTests\obj\Debug\netcoreapp2.1\AllUnitTests.AssemblyInfo.cs
+C:\Users\ramin\source\repos\VideoMan\AllUnitTests\obj\Debug\netcoreapp2.1\AllUnitTests.csproj.CopyComplete
+C:\Users\ramin\source\repos\VideoMan\AllUnitTests\obj\Debug\netcoreapp2.1\AllUnitTests.dll
+C:\Users\ramin\source\repos\VideoMan\AllUnitTests\obj\Debug\netcoreapp2.1\AllUnitTests.pdb
