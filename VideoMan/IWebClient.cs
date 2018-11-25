@@ -3,6 +3,6 @@
     public interface IWebClient
     {
         byte[] DownloadDataFromUrl(string url);
-        string DownloadHtmlFromUrl(string url);
+        string DownloadStringFromUrl(string url);
     }
 }

@@ -10,7 +10,7 @@ namespace VideoMan
             return new WebClient().DownloadData(url);
         }
 
-        public string DownloadHtmlFromUrl(string url)
+        public string DownloadStringFromUrl(string url)
         {
             var data = DownloadDataFromUrl(url);
             return Encoding.UTF8.GetString(data);

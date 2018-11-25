@@ -17,7 +17,7 @@ namespace VideoMan
         public IEnumerable<VideoDownloadInfo> Resolve(string url)
         {
             var client = DI.Instance.GetInstance<IWebClient>();
-            var html = client.DownloadHtmlFromUrl(url);
+            var html = client.DownloadStringFromUrl(url);
             //embed video url in iframeSrc
             var iframeSrc = html.GetStringBetween("<iframe src=\"", "\"");
             if (iframeSrc.StartsWith("//")) iframeSrc = "http:" + iframeSrc;
@@ -28,13 +28,13 @@ namespace VideoMan
                 .RemoveSubString("vidmoly.me/embed-")
                 .RemoveSubString(".html");
 
-            html = client.DownloadHtmlFromUrl(iframeSrc);
+            html = client.DownloadStringFromUrl(iframeSrc);
             var label = html.GetStringBetween("|label|", "|");
 
             //TODO get Hash & get direct download url instead
             //var hash = "";
             //var newUrl =$"https://vidmoly.me/dl?op=download_orig&id={videoId}&mode=&hash={hash}";
-            //html = client.DownloadHtmlFromUrl(newUrl);
+            //html = client.DownloadStringFromUrl(newUrl);
             var videoUrl = $"//144.mokalix.tk/{label}/v.mp4";
 
             return new[]

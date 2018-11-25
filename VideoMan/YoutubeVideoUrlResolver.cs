@@ -200,7 +200,7 @@ namespace VideoMan
 
         private static JObject LoadJson(string url)
         {
-            var pageSource = DI.Instance.GetInstance<IWebClient>().DownloadHtmlFromUrl(url);
+            var pageSource = DI.Instance.GetInstance<IWebClient>().DownloadStringFromUrl(url);
 
             if (IsVideoUnavailable(pageSource))
             {

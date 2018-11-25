@@ -8,5 +8,6 @@
         _3GP,
         WebM,
         _3GPP,
+        MPEG
     }
 }
