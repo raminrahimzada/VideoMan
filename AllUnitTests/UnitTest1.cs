@@ -5,12 +5,12 @@ namespace AllUnitTests
 {
     public class UnitTest1
     {
+        
         [Fact]
         public void TestDependencyInjection()
         {
-            DI.Instance.Register<IWebClient, SimpleWebClient>();
-            var client = DI.Instance.GetInstance<IWebClient>();
-            Assert.Equal(client.GetType().FullName, typeof(SimpleWebClient).FullName);
+            App.RegisterStartup();
+            Assert.Equal(App.Client.GetType().FullName, typeof(SimpleWebClient).FullName);
         }
         [Fact]
         public void TestStringHelper1()

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 
@@ -10,8 +8,7 @@ namespace VideoMan
     {
         public IEnumerable<VideoDownloadInfo> Resolve(string url)
         {
-            var client = DI.Instance.GetInstance<IWebClient>();
-            var html = client.DownloadStringFromUrl(url);
+             var html = App.Client.DownloadStringFromUrl(url);
             var jsonMetaData = html.GetStringBetween("__PLAYER_CONFIG__ = ", ";</script>");
             var jObj = JObject.Parse(jsonMetaData);
             var metadataTemplateUrl = jObj.SelectToken("context").SelectToken("metadata_template_url").ToString();
@@ -19,7 +16,7 @@ namespace VideoMan
             var videoId = embedder.RemoveSubString("https://").RemoveSubString("http://").RemoveSubString("www.")
                 .RemoveSubString("dailymotion.com/video/");
             metadataTemplateUrl = metadataTemplateUrl.Replace(":videoId", videoId);
-            var jsonMetaData2 = client.DownloadStringFromUrl(metadataTemplateUrl);
+            var jsonMetaData2 = App.Client.DownloadStringFromUrl(metadataTemplateUrl);
             jObj = JObject.Parse(jsonMetaData2);
             var filmstripUrl = jObj.SelectToken("filmstrip_url").ToString();
             //no need to this
@@ -51,25 +48,14 @@ namespace VideoMan
                     Title = title,
                     UrlString = urlx,
                     Duration = duration,
-                    MimeType = ParseYoutubeMimeType(type),
+                    MimeType = type.ParseMimeType(),
                     ResolutionType = (VideoResolutionTypes) resolution,
                     ThumbnailPictureUrlString = thumbnailUrl,
                     ThumbnailSlideUrl = filmstripUrl
                 };
-                int t = 1;
             }
         }
 
-        private static VideoMimeTypes ParseYoutubeMimeType(string type)
-        {
-            if (string.IsNullOrEmpty(type)) return VideoMimeTypes.None;
-            if (type == "application/x-mpegURL") return VideoMimeTypes.MPEG;
-
-            if (type.Contains("video/mp4")) return VideoMimeTypes.Mp4;
-            if (type.Contains("video/webm")) return VideoMimeTypes.WebM;
-            if (type.Contains("video/3gpp")) return VideoMimeTypes._3GPP;
-
-            throw new Exception("not implemented yet");
-        }
+       
     }
 }

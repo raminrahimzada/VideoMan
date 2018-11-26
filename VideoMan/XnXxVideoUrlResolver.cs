@@ -6,7 +6,7 @@ namespace VideoMan
     {
         public IEnumerable<VideoDownloadInfo> Resolve(string url)
         {
-            var html = DI.Instance.GetInstance<IWebClient>().DownloadStringFromUrl(url);
+            var html = App.Client.DownloadStringFromUrl(url);
             
             // theese not used
             // ReSharper disable   UnusedVariable

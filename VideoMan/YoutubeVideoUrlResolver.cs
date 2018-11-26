@@ -58,59 +58,30 @@ namespace VideoMan
             }
 
             url = url.Replace("/watch#", "/watch?");
-
             var query = HttpHelper.ParseQueryString(url);
-
             if (!query.TryGetValue("v", out videoId))
             {
                 normalizedUrl = null;
                 return false;
             }
-
             normalizedUrl = "http://youtube.com/watch?v=" + videoId;
 
             return true;
         }
 
-        private static VideoResolutionTypes ParseYoutubeResolution(string quality)
-        {
-            if (string.IsNullOrEmpty(quality)) return VideoResolutionTypes.P0;
-
-            switch (quality)
-            {
-                case "1440p": return VideoResolutionTypes.P1440;
-                case "2160p": return VideoResolutionTypes.P2160;
-                case "1080p": return VideoResolutionTypes.P1080;
-                case "720p": return VideoResolutionTypes.P720;
-                case "480p": return VideoResolutionTypes.P480;
-                case "360p": return VideoResolutionTypes.P360;
-                case "240p": return VideoResolutionTypes.P240;
-                case "144p": return VideoResolutionTypes.P144;
-                
-                //quality
-                case "hd720": return VideoResolutionTypes.P720;
-                case "medium": return VideoResolutionTypes.P480;
-                case "small": return VideoResolutionTypes.P240;
-            }
-
-            throw new Exception("not implemented yet");
-        }
-
-        private static VideoMimeTypes ParseYoutubeMimeType(string type)
-        {
-            if (string.IsNullOrEmpty(type)) return VideoMimeTypes.None;
-
-            if (type.Contains("video/mp4")) return VideoMimeTypes.Mp4;
-            if (type.Contains("video/webm")) return VideoMimeTypes.WebM;
-            if (type.Contains("video/3gpp")) return VideoMimeTypes._3GPP;
-
-            throw new Exception("not implemented yet");
-        }
-
         private static IEnumerable<VideoDownloadInfo> ExtractDownloadUrls(JObject json)
         {
-            var splitByUrls = GetStreamMap(json).Split(',');
-            var adaptiveFmtSplitByUrls = GetAdaptiveStreamMap(json).Split(',');
+            // bugfix: adaptive_fmts is missing in some videos, use url_encoded_fmt_stream_map instead
+            var streamMap = json["args"]["adaptive_fmts"] ?? json["args"]["url_encoded_fmt_stream_map"];
+
+            var streamMapString = streamMap?.ToString();
+
+            if (streamMapString == null || streamMapString.Contains("been+removed"))
+            {
+                throw new Exception("Video is removed or has an age restriction.");
+            }
+            var splitByUrls = streamMapString.Split(',');
+            var adaptiveFmtSplitByUrls = streamMap.ToString().Split(',');
             splitByUrls = splitByUrls.Concat(adaptiveFmtSplitByUrls).ToArray();
 
             const string signatureQuery = "signature";
@@ -120,7 +91,6 @@ namespace VideoMan
             {
                 var queries = HttpHelper.ParseQueryString(s);
                 string url;
-
 
                 if (queries.ContainsKey("s") || queries.ContainsKey("sig"))
                 {
@@ -136,7 +106,6 @@ namespace VideoMan
 
                 url = HttpHelper.UrlDecode(url);
                 var parameters = HttpHelper.ParseQueryString(url);
-
 
                 if (!parameters.ContainsKey(rateBypassFlag))
                     url += $"&{rateBypassFlag}=yes";
@@ -160,49 +129,25 @@ namespace VideoMan
                 yield return new VideoDownloadInfo
                 {
                     UrlString = url,
-                    ResolutionType = ParseYoutubeResolution(quality),
-                    MimeType = ParseYoutubeMimeType(type),
+                    ResolutionType = quality.ParseResolutionType(),
+                    MimeType = type.ParseMimeType(),
                     Width = w,
                     Height = h
                 };
             }
         }
 
-        private static string GetAdaptiveStreamMap(JObject json)
-        {
-            var streamMap = json["args"]["adaptive_fmts"] ?? json["args"]["url_encoded_fmt_stream_map"];
-            // bugfix: adaptive_fmts is missing in some videos, use url_encoded_fmt_stream_map instead
-            return streamMap.ToString();
-        }
+        
 
-        private static string GetStreamMap(JObject json)
-        {
-            var streamMap = json["args"]["url_encoded_fmt_stream_map"];
-
-            var streamMapString = streamMap?.ToString();
-
-            if (streamMapString == null || streamMapString.Contains("been+removed"))
-            {
-                throw new Exception("Video is removed or has an age restriction.");
-            }
-
-            return streamMapString;
-        }
-
-         
-
-        private static bool IsVideoUnavailable(string pageSource)
-        {
-            const string unavailableContainer = "<div id=\"watch-player-unavailable\">";
-
-            return pageSource.Contains(unavailableContainer);
-        }
+        
 
         private static JObject LoadJson(string url)
         {
-            var pageSource = DI.Instance.GetInstance<IWebClient>().DownloadStringFromUrl(url);
+            var pageSource = App.Client.DownloadStringFromUrl(url);
+            const string unavailableContainer = "<div id=\"watch-player-unavailable\">";
 
-            if (IsVideoUnavailable(pageSource))
+            var isUnavailable= pageSource.Contains(unavailableContainer);
+            if (isUnavailable)
             {
                 throw new Exception("VideoNotAvailable");
             }

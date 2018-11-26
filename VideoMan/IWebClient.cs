@@ -1,6 +1,8 @@
-﻿namespace VideoMan
+﻿using System;
+
+namespace VideoMan
 {
-    public interface IWebClient
+    public interface IWebClient:IDisposable
     {
         byte[] DownloadDataFromUrl(string url);
         string DownloadStringFromUrl(string url);

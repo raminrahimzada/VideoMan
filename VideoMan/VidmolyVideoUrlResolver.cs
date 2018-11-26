@@ -16,8 +16,8 @@ namespace VideoMan
     {
         public IEnumerable<VideoDownloadInfo> Resolve(string url)
         {
-            var client = DI.Instance.GetInstance<IWebClient>();
-            var html = client.DownloadStringFromUrl(url);
+             
+            var html = App.Client.DownloadStringFromUrl(url);
             //embed video url in iframeSrc
             var iframeSrc = html.GetStringBetween("<iframe src=\"", "\"");
             if (iframeSrc.StartsWith("//")) iframeSrc = "http:" + iframeSrc;
@@ -28,7 +28,7 @@ namespace VideoMan
                 .RemoveSubString("vidmoly.me/embed-")
                 .RemoveSubString(".html");
 
-            html = client.DownloadStringFromUrl(iframeSrc);
+            html = App.Client.DownloadStringFromUrl(iframeSrc);
             var label = html.GetStringBetween("|label|", "|");
 
             //TODO get Hash & get direct download url instead

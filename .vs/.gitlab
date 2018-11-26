@@ -1,0 +1,13 @@
+{
+  "User": {
+    "Id": 2226354,
+    "Username": "mathman",
+    "Name": "Ramin Rahimzada",
+    "Email": "raminrahimzada@gmail.com",
+    "AvatarUrl": "https://secure.gravatar.com/avatar/3db5e3341ea491b66043da7e34206bc6?s=80&d=identicon",
+    "PrivateToken": "ba14ad922c251df755c6d86f3789c86e723b69ffff7abf94a17b3eda2c558a14",
+    "Host": "https://gitlab.com",
+    "TwoFactorEnabled": false,
+    "ApiVersion": 3
+  }
+}
